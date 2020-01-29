@@ -13,14 +13,31 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+
+
+    @OneToMany(mappedBy = "appUser")
+    List<Post> posts;
+
     String username;
     String password;
+    String firstName;
+    String lastName;
+    String bio;
+    String favoriteFood;
 
     public AppUser(){}
 
-    public AppUser(String username, String password){
+    public AppUser(String username, String password, String firstName, String lastName, String bio, String favoriteFood) {
         this.username = username;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bio = bio;
+        this.favoriteFood = favoriteFood;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 
 
@@ -63,5 +80,37 @@ public class AppUser implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public String getFavoriteFood() {
+        return favoriteFood;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public void setFavoriteFood(String favoriteFood) {
+        this.favoriteFood = favoriteFood;
     }
 }
