@@ -11,12 +11,7 @@ import java.security.*;
 public class HomeController {
 
     @GetMapping("/")
-    public String getHome(Principal p, Model m){
-
-        System.out.println(p);
-        if(p != null){
-            m.addAttribute("username",p.getName());
-        }
+    public String getHome(){
         return "home";
     }
 }

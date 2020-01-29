@@ -5,15 +5,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="/style.css">
     <title>Home</title>
 </head>
 <body>
-<h1>Hello, [[${username}]]</h1>
+<h1>Hello [[${username}]]</h1>
+<h2>Log in: </h2>
 <form action="/login" method="POST">
     Username: <input type="text" name="username">
     Password: <input type="text" name="password">
     <input type="submit">
 </form>
-<a href="/register">Register</a>
+<br>
+<br>
+<a href="/signup">Register</a>
 </body>
 </html>
