@@ -62,14 +62,67 @@ public class UserController {
             m.addAttribute("posts",user.getPosts());
         }
 
+        return "myprofile";
+    }
+
+    @GetMapping("/users")
+    public String viewUsers(Principal p,Model m){
+        List<AppUser> users = userRepository.findAll();
+        users.remove(userRepository.findByUsername(p.getName()));
+        m.addAttribute("users",users);
+        return "users";
+    }
+    @PostMapping("/view")
+    public String viewUser(long id, Model m){
+
+        AppUser user = userRepository.findById(id).get();
+
+        m.addAttribute("username",user.getUsername());
+
+        m.addAttribute("firstName",user.getFirstName());
+
+        m.addAttribute("lastName",user.getLastName());
+
+        m.addAttribute("bio",user.getBio());
+
+        m.addAttribute("favoriteFood",user.getFavoriteFood());
+
+        m.addAttribute("posts",user.getPosts());
+
+        m.addAttribute("id",user.getId());
+
         return "profile";
     }
-    @PostMapping("/post")
-    public RedirectView createPost(String body, Principal p){
-        AppUser poster = userRepository.findByUsername(p.getName());
-        Post newPost = new Post(body,poster);
-        postRepository.save(newPost);
-        return new RedirectView("/myprofile");
+    @GetMapping("/view/{id}")
+    public String viewUserGet(@PathVariable long id, Model m){
+
+        AppUser user = userRepository.findById(id).get();
+
+        m.addAttribute("username",user.getUsername());
+
+        m.addAttribute("firstName",user.getFirstName());
+
+        m.addAttribute("lastName",user.getLastName());
+
+        m.addAttribute("bio",user.getBio());
+
+        m.addAttribute("favoriteFood",user.getFavoriteFood());
+
+        m.addAttribute("posts",user.getPosts());
+
+        m.addAttribute("id",user.getId());
+
+        return "profile";
+    }
+
+    @PostMapping("/follow")
+    public RedirectView followUser(long id, Principal p){
+
+        AppUser user = userRepository.findByUsername(p.getName());
+        AppUser userToFollow = userRepository.findById(id).get();
+        user.addUserToFollow(userToFollow);
+        userRepository.save(user);
+        return new RedirectView("/feed");
     }
 
 }

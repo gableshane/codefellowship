@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="/style.css">
+    <title>Feed</title>
+</head>
+<body>
+<ul th:each="user : ${usersUserIsFollowing}">
+    <a th:href="'/view/' + ${user.id}">[[${user.username}]]</a>
+    <li th:each="post : ${user.posts}">
+        <span th:text="${post.body}"></span>
+        <span th:text="${post.createdAt}"></span>
+    </li>
+</ul>
+</body>
+</html>
