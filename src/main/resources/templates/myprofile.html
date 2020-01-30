@@ -18,9 +18,10 @@
     <li>Bio: [[${bio}]]</li>
     <li>Favorite Food: [[${favoriteFood}]]</li>
 </ul>
-<form action="/follow" method="POST">
-    <input type="hidden" name="id" th:value="${id}">
-    <input type="submit" value="Follow">
+<form action="/post" method="POST">
+    New post: <br>
+    <textarea name="body" rows="10" cols="30"></textarea>
+    <input type="submit">
 </form>
 <p>posts:</p>
 <ul>

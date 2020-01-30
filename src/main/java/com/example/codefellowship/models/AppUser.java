@@ -13,6 +13,8 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @OneToMany
+    List<AppUser> usersThatIAmFollowing;
 
 
     @OneToMany(mappedBy = "appUser")
@@ -38,6 +40,10 @@ public class AppUser implements UserDetails {
 
     public List<Post> getPosts() {
         return posts;
+    }
+
+    public List<AppUser> getUsersThatIAmFollowing(){
+        return usersThatIAmFollowing;
     }
 
 
@@ -112,5 +118,19 @@ public class AppUser implements UserDetails {
 
     public void setFavoriteFood(String favoriteFood) {
         this.favoriteFood = favoriteFood;
+    }
+
+    public long getId() {
+        return id;
+    }
+    public void addUserToFollow(AppUser userToFollow){
+        this.usersThatIAmFollowing.add(userToFollow);
+    }
+
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "username='" + username + '\'' +
+                '}';
     }
 }
