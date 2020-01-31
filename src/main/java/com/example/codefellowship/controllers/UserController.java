@@ -28,7 +28,7 @@ public class UserController {
     @PostMapping("/signup")
     public RedirectView registerUser(String username,String password, String firstName, String lastName, String bio, String favoriteFood){
 
-        AppUser newUser = new AppUser(username,passwordEncoder.encode(password),firstName,lastName,bio,favoriteFood);
+        AppUser newUser = new AppUser(username,passwordEncoder.encode(password),firstName,lastName,bio);
 
         userRepository.save(newUser);
 
@@ -57,7 +57,7 @@ public class UserController {
 
             m.addAttribute("bio",user.getBio());
 
-            m.addAttribute("favoriteFood",user.getFavoriteFood());
+            m.addAttribute("imgUrl",user.getImgUrl());
 
             m.addAttribute("posts",user.getPosts());
         }
@@ -85,7 +85,7 @@ public class UserController {
 
         m.addAttribute("bio",user.getBio());
 
-        m.addAttribute("favoriteFood",user.getFavoriteFood());
+        m.addAttribute("favoriteFood",user.getImgUrl());
 
         m.addAttribute("posts",user.getPosts());
 
@@ -106,7 +106,7 @@ public class UserController {
 
         m.addAttribute("bio",user.getBio());
 
-        m.addAttribute("favoriteFood",user.getFavoriteFood());
+        m.addAttribute("favoriteFood",user.getImgUrl());
 
         m.addAttribute("posts",user.getPosts());
 
