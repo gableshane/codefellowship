@@ -25,17 +25,17 @@ public class AppUser implements UserDetails {
     String firstName;
     String lastName;
     String bio;
-    String favoriteFood;
+    String imgUrl;
 
     public AppUser(){}
 
-    public AppUser(String username, String password, String firstName, String lastName, String bio, String favoriteFood) {
+    public AppUser(String username, String password, String firstName, String lastName, String bio) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.bio = bio;
-        this.favoriteFood = favoriteFood;
+        this.imgUrl = "/default.jpg";
     }
 
     public List<Post> getPosts() {
@@ -100,8 +100,8 @@ public class AppUser implements UserDetails {
         return bio;
     }
 
-    public String getFavoriteFood() {
-        return favoriteFood;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
     public void setFirstName(String firstName) {
@@ -116,8 +116,8 @@ public class AppUser implements UserDetails {
         this.bio = bio;
     }
 
-    public void setFavoriteFood(String favoriteFood) {
-        this.favoriteFood = favoriteFood;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public long getId() {

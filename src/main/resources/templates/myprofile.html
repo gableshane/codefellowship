@@ -5,10 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="/reset.css">
     <link type="text/css" rel="stylesheet" href="/style.css">
     <title>profile</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/myprofile">My Profile</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/feed">Feed</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
 <h1>Hello [[${username}]]</h1>
 <h2>Profile information:</h2>
 <ul>
@@ -16,7 +26,7 @@
     <li>First Name: [[${firstName}]]</li>
     <li>last Name: [[${lastName}]]</li>
     <li>Bio: [[${bio}]]</li>
-    <li>Favorite Food: [[${favoriteFood}]]</li>
+    <li><img th:src="${imgUrl}" height="300" width="300"></li>
 </ul>
 <form action="/post" method="POST">
     New post: <br>

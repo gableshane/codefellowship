@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="/reset.css">
     <link type="text/css" rel="stylesheet" href="/style.css">
-    <title>users</title>
+    <title>Error</title>
 </head>
 <body>
 <nav>
@@ -19,14 +19,10 @@
         <li><a href="/logout">Logout</a></li>
     </ul>
 </nav>
-<ul>
-    <li th:each="user : ${users}">
-        <span>[[${user.username}]]</span>
-        <form action="/view" method="POST">
-            <input type="hidden" name="id" th:value="${user.id}">
-            <input type="submit" value="View">
-        </form>
-    </li>
-</ul>
+<br>
+<br>
+<br>
+<br>
+<p id="error">Error: You need to be logged in.</p>
 </body>
 </html>

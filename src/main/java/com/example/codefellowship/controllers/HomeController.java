@@ -4,6 +4,7 @@ package com.example.codefellowship.controllers;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.*;
 
 import java.security.*;
 
@@ -14,4 +15,5 @@ public class HomeController {
     public String getHome(){
         return "home";
     }
+
 }
