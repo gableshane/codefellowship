@@ -124,5 +124,10 @@ public class UserController {
         userRepository.save(user);
         return new RedirectView("/feed");
     }
+    @GetMapping("/login")
+    public String getError(Model m){
+        m.addAttribute("error","Username or password was incorrect");
+        return "home";
+    }
 
 }

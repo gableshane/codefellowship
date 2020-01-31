@@ -16,8 +16,4 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/error")
-    public RedirectView getError(){
-        return new RedirectView("/");
-    }
 }
