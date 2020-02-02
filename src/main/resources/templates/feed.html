@@ -10,20 +10,17 @@
     <title>Feed</title>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/myprofile">My Profile</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="/feed">Feed</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
-</nav>
+<header th:insert="fragments/header.html :: header"></header>
 <ul th:each="user : ${usersUserIsFollowing}">
-    <a th:href="'/view/' + ${user.id}">[[${user.username}]]</a>
+    <span>User: [[${user.username}]]</span>
+    <form action="/view" method="POST">
+        <input type="hidden" name="id" th:value="${user.id}">
+        <input type="submit" value="View">
+    </form>
+    <p>Posts:</p>
     <li th:each="post : ${user.posts}">
-        <span th:text="${post.body}"></span>
-        <span th:text="${post.createdAt}"></span>
+        <p th:text="${post.body}"></p>
+        <p th:text="${post.createdAt}"></p>
     </li>
 </ul>
 </body>

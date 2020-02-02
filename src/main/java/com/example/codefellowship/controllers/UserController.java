@@ -60,6 +60,7 @@ public class UserController {
             m.addAttribute("imgUrl",user.getImgUrl());
 
             m.addAttribute("posts",user.getPosts());
+
         }
 
         return "myprofile";
@@ -73,9 +74,13 @@ public class UserController {
         return "users";
     }
     @PostMapping("/view")
-    public String viewUser(long id, Model m){
+    public String viewUser(long id, Model m,Principal p){
 
         AppUser user = userRepository.findById(id).get();
+
+        AppUser currentUser = userRepository.findByUsername(p.getName());
+
+        m.addAttribute("currentUser",currentUser.getUsername());
 
         m.addAttribute("username",user.getUsername());
 
@@ -85,32 +90,12 @@ public class UserController {
 
         m.addAttribute("bio",user.getBio());
 
-        m.addAttribute("favoriteFood",user.getImgUrl());
+        m.addAttribute("imgUrl",user.getImgUrl());
 
         m.addAttribute("posts",user.getPosts());
 
         m.addAttribute("id",user.getId());
 
-        return "profile";
-    }
-    @GetMapping("/view/{id}")
-    public String viewUserGet(@PathVariable long id, Model m){
-
-        AppUser user = userRepository.findById(id).get();
-
-        m.addAttribute("username",user.getUsername());
-
-        m.addAttribute("firstName",user.getFirstName());
-
-        m.addAttribute("lastName",user.getLastName());
-
-        m.addAttribute("bio",user.getBio());
-
-        m.addAttribute("favoriteFood",user.getImgUrl());
-
-        m.addAttribute("posts",user.getPosts());
-
-        m.addAttribute("id",user.getId());
 
         return "profile";
     }
@@ -125,7 +110,7 @@ public class UserController {
         return new RedirectView("/feed");
     }
     @GetMapping("/login")
-    public String getError(Model m){
+    public String getError(Model m, Principal p){
         m.addAttribute("error","Username or password was incorrect");
         return "home";
     }
