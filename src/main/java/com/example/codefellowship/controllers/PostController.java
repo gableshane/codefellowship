@@ -20,7 +20,7 @@ public class PostController {
     PostRepository postRepository;
 
     @PostMapping("/post")
-    public RedirectView createPost(String body, Principal p){
+    public RedirectView createPost(String body, Principal p, Model m){
         AppUser poster = userRepository.findByUsername(p.getName());
         Post newPost = new Post(body,poster);
         postRepository.save(newPost);
